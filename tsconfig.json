@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ], // Bibliotecas a serem incluídas no processo de compilação.
+    "allowJs": true, // Permite compilar arquivos JavaScript.  Útil para migrações.
+    "skipLibCheck": true, // Ignora as verificações de tipos para bibliotecas.
+    "strict": true, // Habilita verificações de tipos estritas.  Recomendado!
+    "forceConsistentCasingInFileNames": true, // Garante que a capitalização de nomes de arquivos seja consistente.
+    "esModuleInterop": true, // Habilita a interoperabilidade de módulos ES.
+    "module": "esnext", // Define o sistema de módulos a ser usado.
+    "moduleResolution": "node", // Resolve módulos usando o algoritmo Node.js.
+    "resolveJsonModule": true, // Permite importar arquivos JSON.
+    "isolatedModules": true, // Compila cada arquivo separadamente.  Útil para projetos grandes.
+    "jsx": "preserve", // Configura o suporte a JSX.  "preserve" mantém JSX no output.
+    "incremental": true // Habilita a compilação incremental para otimizar o tempo de compilação.
+    ,
+    "noEmit": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "lambda/image-resizer/index.js",
+    "pages/index.jsx"
+  ], // Arquivos a serem incluídos na compilação.
+  "exclude": [
+    "node_modules",
+    "dist"
+  ] // Diretórios a serem excluídos da compilação.
+}

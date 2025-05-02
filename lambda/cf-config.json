@@ -1,0 +1,48 @@
+{
+  "CallerReference": "poc-image-opt-estrela-bet",
+  "Aliases": {
+    "Quantity": 0
+  },
+  "DefaultRootObject": "",
+  "Comment": "POC de otimização de imagens para o Estrela Bet",
+  "Enabled": true,
+  "Origins": {
+    "Quantity": 1,
+    "Items": [
+      {
+        "Id": "S3CacheOrigin",
+        "DomainName": "poc-image-estrela-bet-cache.s3.amazonaws.com",
+        "S3OriginConfig": { "OriginAccessIdentity": "" }
+      }
+    ]
+  },
+  "DefaultCacheBehavior": {
+    "TargetOriginId": "S3CacheOrigin",
+    "ViewerProtocolPolicy": "redirect-to-https",
+    "AllowedMethods": {
+      "Quantity": 2,
+      "Items": ["GET", "HEAD"],
+      "CachedMethods": { "Quantity": 2, "Items": ["GET", "HEAD"] }
+    },
+    "Compress": true,
+    "LambdaFunctionAssociations": {
+      "Quantity": 1,
+      "Items": [
+        {
+          "LambdaFunctionARN": "arn:aws:lambda:us-east-1:905418320524:function:image-resizer-edge:1",
+          "EventType": "origin-request",
+          "IncludeBody": false
+        }
+      ]
+    },
+    "ForwardedValues": {
+      "QueryString": false,
+      "Cookies": { "Forward": "none" },
+      "Headers": { "Quantity": 0 },
+      "QueryStringCacheKeys": { "Quantity": 0 }
+    },
+    "MinTTL": 0,
+    "DefaultTTL": 86400,
+    "MaxTTL": 31536000
+  }
+}
